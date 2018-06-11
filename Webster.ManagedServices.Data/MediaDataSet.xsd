@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="MediaDataSet" targetNamespace="http://tempuri.org/MediaDataSet.xsd" xmlns:mstns="http://tempuri.org/MediaDataSet.xsd" xmlns="http://tempuri.org/MediaDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" GeneratorFunctionsComponentClassName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" UserFunctionsComponentName="QueriesTableAdapter" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="MediaConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="MediaConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Webster.ManagedServices.Data.Properties.Settings.GlobalReference.Default.MediaConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="PlaylistsTableAdapter" GeneratorDataComponentClassName="PlaylistsTableAdapter" Name="Playlists" UserDataComponentName="PlaylistsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MediaConnectionString (Settings)" DbObjectName="Media.dbo.Playlists" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT PlayListID, PlaylistName FROM dbo.Playlists</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="PlayListID" DataSetColumn="PlayListID" />
+              <Mapping SourceColumn="PlaylistName" DataSetColumn="PlaylistName" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SongsTableAdapter" GeneratorDataComponentClassName="SongsTableAdapter" Name="Songs" UserDataComponentName="SongsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MediaConnectionString (Settings)" DbObjectName="Media.dbo.Songs" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT SongID, SongFileName, SongData FROM dbo.Songs</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="SongID" DataSetColumn="SongID" />
+              <Mapping SourceColumn="SongFileName" DataSetColumn="SongFileName" />
+              <Mapping SourceColumn="SongData" DataSetColumn="SongData" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SongsInPlaylistsTableAdapter" GeneratorDataComponentClassName="SongsInPlaylistsTableAdapter" Name="SongsInPlaylists" UserDataComponentName="SongsInPlaylistsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MediaConnectionString (Settings)" DbObjectName="Media.dbo.SongsInPlaylists" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT Id, PlaylistID, SongID FROM dbo.SongsInPlaylists</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Id" DataSetColumn="Id" />
+              <Mapping SourceColumn="PlaylistID" DataSetColumn="PlaylistID" />
+              <Mapping SourceColumn="SongID" DataSetColumn="SongID" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SelectPlaylistTableAdapter" GeneratorDataComponentClassName="SelectPlaylistTableAdapter" Name="SelectPlaylist" UserDataComponentName="SelectPlaylistTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MediaConnectionString (Settings)" DbObjectName="Media.dbo.SelectPlaylist" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="true">
+                    <CommandText>dbo.SelectPlaylist</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DataTypeServer="uniqueidentifier" DbType="Guid" Direction="Input" ParameterName="@PlayListID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="16" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="PlayListID" DataSetColumn="PlayListID" />
+              <Mapping SourceColumn="PlaylistName" DataSetColumn="PlaylistName" />
+              <Mapping SourceColumn="SongID" DataSetColumn="SongID" />
+              <Mapping SourceColumn="SongFileName" DataSetColumn="SongFileName" />
+              <Mapping SourceColumn="SongData" DataSetColumn="SongData" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources>
+          <DbSource ConnectionRef="MediaConnectionString (Settings)" DbObjectName="Media.dbo.InsertNewPlaylist" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="InsertNewPlaylist" MethodsParameterType="CLR" Modifier="Public" Name="InsertNewPlaylist" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="InsertNewPlaylist">
+            <SelectCommand>
+              <DbCommand CommandType="StoredProcedure" ModifiedByUser="true">
+                <CommandText>dbo.InsertNewPlaylist</CommandText>
+                <Parameters>
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DataTypeServer="uniqueidentifier" DbType="Guid" Direction="Input" ParameterName="@PlayListID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="16" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@PlaylistName" Precision="0" ProviderType="NVarChar" Scale="0" Size="2147483647" SourceColumnNullMapping="false" SourceVersion="Current" />
+                </Parameters>
+              </DbCommand>
+            </SelectCommand>
+          </DbSource>
+          <DbSource ConnectionRef="MediaConnectionString (Settings)" DbObjectName="Media.dbo.InsertNewSong" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="InsertNewSong" MethodsParameterType="CLR" Modifier="Public" Name="InsertNewSong" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="InsertNewSong">
+            <SelectCommand>
+              <DbCommand CommandType="StoredProcedure" ModifiedByUser="true">
+                <CommandText>dbo.InsertNewSong</CommandText>
+                <Parameters>
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DataTypeServer="uniqueidentifier" DbType="Guid" Direction="Input" ParameterName="@SongID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="16" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@SongFileName" Precision="0" ProviderType="NVarChar" Scale="0" Size="2147483647" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DataTypeServer="varbinary" DbType="Binary" Direction="Input" ParameterName="@SongData" Precision="0" ProviderType="VarBinary" Scale="0" Size="2147483647" SourceColumnNullMapping="false" SourceVersion="Current" />
+                </Parameters>
+              </DbCommand>
+            </SelectCommand>
+          </DbSource>
+          <DbSource ConnectionRef="MediaConnectionString (Settings)" DbObjectName="Media.dbo.InsertSongIntoPlaylist" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="InsertSongIntoPlaylist" MethodsParameterType="CLR" Modifier="Public" Name="InsertSongIntoPlaylist" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="InsertSongIntoPlaylist">
+            <SelectCommand>
+              <DbCommand CommandType="StoredProcedure" ModifiedByUser="true">
+                <CommandText>dbo.InsertSongIntoPlaylist</CommandText>
+                <Parameters>
+                  <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DataTypeServer="uniqueidentifier" DbType="Guid" Direction="Input" ParameterName="@PlayListID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="16" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DataTypeServer="uniqueidentifier" DbType="Guid" Direction="Input" ParameterName="@SongID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="16" SourceColumnNullMapping="false" SourceVersion="Current" />
+                </Parameters>
+              </DbCommand>
+            </SelectCommand>
+          </DbSource>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="MediaDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="MediaDataSet" msprop:Generator_UserDSName="MediaDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Playlists" msprop:Generator_TableClassName="PlaylistsDataTable" msprop:Generator_TableVarName="tablePlaylists" msprop:Generator_RowChangedName="PlaylistsRowChanged" msprop:Generator_TablePropName="Playlists" msprop:Generator_RowDeletingName="PlaylistsRowDeleting" msprop:Generator_RowChangingName="PlaylistsRowChanging" msprop:Generator_RowEvHandlerName="PlaylistsRowChangeEventHandler" msprop:Generator_RowDeletedName="PlaylistsRowDeleted" msprop:Generator_RowClassName="PlaylistsRow" msprop:Generator_UserTableName="Playlists" msprop:Generator_RowEvArgName="PlaylistsRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PlayListID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnPlayListID" msprop:Generator_ColumnPropNameInRow="PlayListID" msprop:Generator_ColumnPropNameInTable="PlayListIDColumn" msprop:Generator_UserColumnName="PlayListID" type="xs:string" />
+              <xs:element name="PlaylistName" msprop:Generator_ColumnVarNameInTable="columnPlaylistName" msprop:Generator_ColumnPropNameInRow="PlaylistName" msprop:Generator_ColumnPropNameInTable="PlaylistNameColumn" msprop:Generator_UserColumnName="PlaylistName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Songs" msprop:Generator_TableClassName="SongsDataTable" msprop:Generator_TableVarName="tableSongs" msprop:Generator_RowChangedName="SongsRowChanged" msprop:Generator_TablePropName="Songs" msprop:Generator_RowDeletingName="SongsRowDeleting" msprop:Generator_RowChangingName="SongsRowChanging" msprop:Generator_RowEvHandlerName="SongsRowChangeEventHandler" msprop:Generator_RowDeletedName="SongsRowDeleted" msprop:Generator_RowClassName="SongsRow" msprop:Generator_UserTableName="Songs" msprop:Generator_RowEvArgName="SongsRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SongID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnSongID" msprop:Generator_ColumnPropNameInRow="SongID" msprop:Generator_ColumnPropNameInTable="SongIDColumn" msprop:Generator_UserColumnName="SongID" type="xs:string" />
+              <xs:element name="SongFileName" msprop:Generator_ColumnVarNameInTable="columnSongFileName" msprop:Generator_ColumnPropNameInRow="SongFileName" msprop:Generator_ColumnPropNameInTable="SongFileNameColumn" msprop:Generator_UserColumnName="SongFileName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SongData" msprop:Generator_ColumnVarNameInTable="columnSongData" msprop:Generator_ColumnPropNameInRow="SongData" msprop:Generator_ColumnPropNameInTable="SongDataColumn" msprop:Generator_UserColumnName="SongData" type="xs:base64Binary" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SongsInPlaylists" msprop:Generator_TableClassName="SongsInPlaylistsDataTable" msprop:Generator_TableVarName="tableSongsInPlaylists" msprop:Generator_RowChangedName="SongsInPlaylistsRowChanged" msprop:Generator_TablePropName="SongsInPlaylists" msprop:Generator_RowDeletingName="SongsInPlaylistsRowDeleting" msprop:Generator_RowChangingName="SongsInPlaylistsRowChanging" msprop:Generator_RowEvHandlerName="SongsInPlaylistsRowChangeEventHandler" msprop:Generator_RowDeletedName="SongsInPlaylistsRowDeleted" msprop:Generator_RowClassName="SongsInPlaylistsRow" msprop:Generator_UserTableName="SongsInPlaylists" msprop:Generator_RowEvArgName="SongsInPlaylistsRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
+              <xs:element name="PlaylistID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnPlaylistID" msprop:Generator_ColumnPropNameInRow="PlaylistID" msprop:Generator_ColumnPropNameInTable="PlaylistIDColumn" msprop:Generator_UserColumnName="PlaylistID" type="xs:string" />
+              <xs:element name="SongID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnSongID" msprop:Generator_ColumnPropNameInRow="SongID" msprop:Generator_ColumnPropNameInTable="SongIDColumn" msprop:Generator_UserColumnName="SongID" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SelectPlaylist" msprop:Generator_TableClassName="SelectPlaylistDataTable" msprop:Generator_TableVarName="tableSelectPlaylist" msprop:Generator_RowChangedName="SelectPlaylistRowChanged" msprop:Generator_TablePropName="SelectPlaylist" msprop:Generator_RowDeletingName="SelectPlaylistRowDeleting" msprop:Generator_RowChangingName="SelectPlaylistRowChanging" msprop:Generator_RowEvHandlerName="SelectPlaylistRowChangeEventHandler" msprop:Generator_RowDeletedName="SelectPlaylistRowDeleted" msprop:Generator_RowClassName="SelectPlaylistRow" msprop:Generator_UserTableName="SelectPlaylist" msprop:Generator_RowEvArgName="SelectPlaylistRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PlayListID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnPlayListID" msprop:Generator_ColumnPropNameInRow="PlayListID" msprop:Generator_ColumnPropNameInTable="PlayListIDColumn" msprop:Generator_UserColumnName="PlayListID" type="xs:string" />
+              <xs:element name="PlaylistName" msprop:Generator_ColumnVarNameInTable="columnPlaylistName" msprop:Generator_ColumnPropNameInRow="PlaylistName" msprop:Generator_ColumnPropNameInTable="PlaylistNameColumn" msprop:Generator_UserColumnName="PlaylistName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SongID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnSongID" msprop:Generator_ColumnPropNameInRow="SongID" msprop:Generator_ColumnPropNameInTable="SongIDColumn" msprop:Generator_UserColumnName="SongID" type="xs:string" />
+              <xs:element name="SongFileName" msprop:Generator_ColumnVarNameInTable="columnSongFileName" msprop:Generator_ColumnPropNameInRow="SongFileName" msprop:Generator_ColumnPropNameInTable="SongFileNameColumn" msprop:Generator_UserColumnName="SongFileName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SongData" msprop:Generator_ColumnVarNameInTable="columnSongData" msprop:Generator_ColumnPropNameInRow="SongData" msprop:Generator_ColumnPropNameInTable="SongDataColumn" msprop:Generator_UserColumnName="SongData" type="xs:base64Binary" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Playlists" />
+      <xs:field xpath="mstns:PlayListID" />
+    </xs:unique>
+    <xs:unique name="Songs_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Songs" />
+      <xs:field xpath="mstns:SongID" />
+    </xs:unique>
+    <xs:unique name="SongsInPlaylists_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:SongsInPlaylists" />
+      <xs:field xpath="mstns:Id" />
+    </xs:unique>
+  </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="FK__SongsInPl__Playl__76969D2E" msdata:parent="Playlists" msdata:child="SongsInPlaylists" msdata:parentkey="PlayListID" msdata:childkey="PlaylistID" msprop:Generator_UserChildTable="SongsInPlaylists" msprop:Generator_ChildPropName="GetSongsInPlaylistsRows" msprop:Generator_UserRelationName="FK__SongsInPl__Playl__76969D2E" msprop:Generator_RelationVarName="relationFK__SongsInPl__Playl__76969D2E" msprop:Generator_UserParentTable="Playlists" msprop:Generator_ParentPropName="PlaylistsRow" />
+      <msdata:Relationship name="FK__SongsInPl__SongI__778AC167" msdata:parent="Songs" msdata:child="SongsInPlaylists" msdata:parentkey="SongID" msdata:childkey="SongID" msprop:Generator_UserChildTable="SongsInPlaylists" msprop:Generator_ChildPropName="GetSongsInPlaylistsRows" msprop:Generator_UserRelationName="FK__SongsInPl__SongI__778AC167" msprop:Generator_RelationVarName="relationFK__SongsInPl__SongI__778AC167" msprop:Generator_UserParentTable="Songs" msprop:Generator_ParentPropName="SongsRow" />
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>

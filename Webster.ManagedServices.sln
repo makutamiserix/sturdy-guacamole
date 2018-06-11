@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webster.ManagedServices", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webster.ManagedServices.Contracts", "Webster.ManagedServices.Contracts\Webster.ManagedServices.Contracts.csproj", "{A4AE11B9-90B3-4F0B-BA1D-11A4017E0858}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webster.ManagedServices.Data", "Webster.ManagedServices.Data\Webster.ManagedServices.Data.csproj", "{E03BFEB1-379A-45FA-A7ED-4A42119E37FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A4AE11B9-90B3-4F0B-BA1D-11A4017E0858}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4AE11B9-90B3-4F0B-BA1D-11A4017E0858}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4AE11B9-90B3-4F0B-BA1D-11A4017E0858}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E03BFEB1-379A-45FA-A7ED-4A42119E37FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E03BFEB1-379A-45FA-A7ED-4A42119E37FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E03BFEB1-379A-45FA-A7ED-4A42119E37FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E03BFEB1-379A-45FA-A7ED-4A42119E37FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
