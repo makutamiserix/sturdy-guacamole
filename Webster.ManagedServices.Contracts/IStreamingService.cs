@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace Webster.ManagedServices.Contracts
 {
+    [ServiceContract]
     public interface IStreamingService
     {
-        [OperationContract] Stream GetAudioStream();
+        [OperationContract] Stream GetAudioStream(Guid songID);
         [OperationContract] Stream[] GetAudioStreams(Guid playListID);
     }
 }

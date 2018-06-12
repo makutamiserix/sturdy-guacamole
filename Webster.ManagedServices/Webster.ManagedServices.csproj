@@ -41,7 +41,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -58,6 +60,18 @@
     <Compile Include="ManagedHostServer.Designer.cs">
       <DependentUpon>ManagedHostServer.cs</DependentUpon>
     </Compile>
+    <Compile Include="ManagedService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ManagedService.Designer.cs">
+      <DependentUpon>ManagedService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManagedServicesInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ManagedServicesInstaller.Designer.cs">
+      <DependentUpon>ManagedServicesInstaller.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -68,6 +82,22 @@
     <EmbeddedResource Include="ManagedHostServer.resx">
       <DependentUpon>ManagedHostServer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ManagedService.resx">
+      <DependentUpon>ManagedService.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManagedServicesInstaller.resx">
+      <DependentUpon>ManagedServicesInstaller.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Webster.ManagedServices.Contracts\Webster.ManagedServices.Contracts.csproj">
+      <Project>{a4ae11b9-90b3-4f0b-ba1d-11a4017e0858}</Project>
+      <Name>Webster.ManagedServices.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Webster.ManagedServices.Data\Webster.ManagedServices.Data.csproj">
+      <Project>{E03BFEB1-379A-45FA-A7ED-4A42119E37FA}</Project>
+      <Name>Webster.ManagedServices.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
