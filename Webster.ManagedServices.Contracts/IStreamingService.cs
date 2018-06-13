@@ -15,5 +15,6 @@ namespace Webster.ManagedServices.Contracts
         [OperationContract] Stream[] GetAudioStreams(Guid playListID);
         [OperationContract] List<Song> GetSongs();
         [OperationContract] List<Playlist> GetPlaylists();
+        [OperationContract] byte[] GetAudioBytes(Guid songID);
     }
 }

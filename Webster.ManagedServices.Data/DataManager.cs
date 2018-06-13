@@ -134,5 +134,10 @@ namespace Webster.ManagedServices.Data
 
             return playlists;
         }
+
+        public byte[] GetAudioBytes(Guid songID)
+        {
+            return this.GetAudioStream(songID).ToArray();
+        }
     }
 }

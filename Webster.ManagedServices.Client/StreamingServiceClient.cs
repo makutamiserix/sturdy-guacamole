@@ -11,6 +11,11 @@ namespace Webster.ManagedServices.Client
 {
     public class StreamingServiceClient : ClientBase<IStreamingService>, IStreamingService
     {
+        public byte[] GetAudioBytes(Guid songID)
+        {
+            return this.Channel.GetAudioBytes(songID);
+        }
+
         public Stream GetAudioStream(Guid songID)
         {
             return this.Channel.GetAudioStream(songID);

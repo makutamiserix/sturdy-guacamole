@@ -23,6 +23,12 @@ namespace Webster.ManagedServices.Web
         }
 
         [WebMethod]
+        public byte[] GetAudioBytes(Guid songID)
+        {
+            return this.manager.GetAudioBytes(songID);
+        }
+
+        [WebMethod]
         public Stream GetAudioStream(Guid songID)
         {
             return this.manager.GetAudioStream(songID);
