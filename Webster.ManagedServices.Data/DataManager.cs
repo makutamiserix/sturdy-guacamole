@@ -94,7 +94,7 @@ namespace Webster.ManagedServices.Data
             {
                 SongID = row.SongID,
                 SongFileName = row.SongFileName,
-                SongData = row.SongData
+                OrderingIndex = row.OrderingIndex
             };
         }
 

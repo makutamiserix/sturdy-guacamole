@@ -12,6 +12,6 @@ namespace Webster.ManagedServices.Contracts
     {
         [DataMember] public Guid SongID { get; set; }
         [DataMember] public string SongFileName { get; set; }
-        [DataMember] public byte[] SongData { get; set; }
+        [DataMember] public int OrderingIndex { get; set; }
     }
 }

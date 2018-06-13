@@ -711,7 +711,7 @@ namespace Webster.ManagedServices.Data {
             
             private global::System.Data.DataColumn columnSongFileName;
             
-            private global::System.Data.DataColumn columnSongData;
+            private global::System.Data.DataColumn columnOrderingIndex;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -764,9 +764,9 @@ namespace Webster.ManagedServices.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn SongDataColumn {
+            public global::System.Data.DataColumn OrderingIndexColumn {
                 get {
-                    return this.columnSongData;
+                    return this.columnOrderingIndex;
                 }
             }
             
@@ -807,12 +807,12 @@ namespace Webster.ManagedServices.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public SongsRow AddSongsRow(System.Guid SongID, string SongFileName, byte[] SongData) {
+            public SongsRow AddSongsRow(System.Guid SongID, string SongFileName) {
                 SongsRow rowSongsRow = ((SongsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         SongID,
                         SongFileName,
-                        SongData};
+                        null};
                 rowSongsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSongsRow);
                 return rowSongsRow;
@@ -844,7 +844,7 @@ namespace Webster.ManagedServices.Data {
             internal void InitVars() {
                 this.columnSongID = base.Columns["SongID"];
                 this.columnSongFileName = base.Columns["SongFileName"];
-                this.columnSongData = base.Columns["SongData"];
+                this.columnOrderingIndex = base.Columns["OrderingIndex"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -854,15 +854,19 @@ namespace Webster.ManagedServices.Data {
                 base.Columns.Add(this.columnSongID);
                 this.columnSongFileName = new global::System.Data.DataColumn("SongFileName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSongFileName);
-                this.columnSongData = new global::System.Data.DataColumn("SongData", typeof(byte[]), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSongData);
+                this.columnOrderingIndex = new global::System.Data.DataColumn("OrderingIndex", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOrderingIndex);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnSongID}, true));
                 this.columnSongID.AllowDBNull = false;
                 this.columnSongID.Unique = true;
                 this.columnSongFileName.AllowDBNull = false;
                 this.columnSongFileName.MaxLength = 2147483647;
-                this.columnSongData.AllowDBNull = false;
+                this.columnOrderingIndex.AutoIncrement = true;
+                this.columnOrderingIndex.AutoIncrementSeed = -1;
+                this.columnOrderingIndex.AutoIncrementStep = -1;
+                this.columnOrderingIndex.AllowDBNull = false;
+                this.columnOrderingIndex.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1002,6 +1006,8 @@ namespace Webster.ManagedServices.Data {
             
             private global::System.Data.DataColumn columnSongID;
             
+            private global::System.Data.DataColumn columnOrderingIndex;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public SongsInPlaylistsDataTable() {
@@ -1061,6 +1067,14 @@ namespace Webster.ManagedServices.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn OrderingIndexColumn {
+                get {
+                    return this.columnOrderingIndex;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1096,12 +1110,13 @@ namespace Webster.ManagedServices.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public SongsInPlaylistsRow AddSongsInPlaylistsRow(PlaylistsRow parentPlaylistsRowByFK__SongsInPl__Playl__76969D2E, SongsRow parentSongsRowByFK__SongsInPl__SongI__778AC167) {
+            public SongsInPlaylistsRow AddSongsInPlaylistsRow(PlaylistsRow parentPlaylistsRowByFK__SongsInPl__Playl__76969D2E, SongsRow parentSongsRowByFK__SongsInPl__SongI__778AC167, int OrderingIndex) {
                 SongsInPlaylistsRow rowSongsInPlaylistsRow = ((SongsInPlaylistsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
-                        null};
+                        null,
+                        OrderingIndex};
                 if ((parentPlaylistsRowByFK__SongsInPl__Playl__76969D2E != null)) {
                     columnValuesArray[1] = parentPlaylistsRowByFK__SongsInPl__Playl__76969D2E[0];
                 }
@@ -1140,6 +1155,7 @@ namespace Webster.ManagedServices.Data {
                 this.columnId = base.Columns["Id"];
                 this.columnPlaylistID = base.Columns["PlaylistID"];
                 this.columnSongID = base.Columns["SongID"];
+                this.columnOrderingIndex = base.Columns["OrderingIndex"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1151,6 +1167,8 @@ namespace Webster.ManagedServices.Data {
                 base.Columns.Add(this.columnPlaylistID);
                 this.columnSongID = new global::System.Data.DataColumn("SongID", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSongID);
+                this.columnOrderingIndex = new global::System.Data.DataColumn("OrderingIndex", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOrderingIndex);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -1161,6 +1179,7 @@ namespace Webster.ManagedServices.Data {
                 this.columnId.Unique = true;
                 this.columnPlaylistID.AllowDBNull = false;
                 this.columnSongID.AllowDBNull = false;
+                this.columnOrderingIndex.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1304,6 +1323,8 @@ namespace Webster.ManagedServices.Data {
             
             private global::System.Data.DataColumn columnSongData;
             
+            private global::System.Data.DataColumn columnOrderingIndex;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public SelectPlaylistDataTable() {
@@ -1379,6 +1400,14 @@ namespace Webster.ManagedServices.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn OrderingIndexColumn {
+                get {
+                    return this.columnOrderingIndex;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1421,7 +1450,8 @@ namespace Webster.ManagedServices.Data {
                         PlaylistName,
                         SongID,
                         SongFileName,
-                        SongData};
+                        SongData,
+                        null};
                 rowSelectPlaylistRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSelectPlaylistRow);
                 return rowSelectPlaylistRow;
@@ -1449,6 +1479,7 @@ namespace Webster.ManagedServices.Data {
                 this.columnSongID = base.Columns["SongID"];
                 this.columnSongFileName = base.Columns["SongFileName"];
                 this.columnSongData = base.Columns["SongData"];
+                this.columnOrderingIndex = base.Columns["OrderingIndex"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1464,6 +1495,8 @@ namespace Webster.ManagedServices.Data {
                 base.Columns.Add(this.columnSongFileName);
                 this.columnSongData = new global::System.Data.DataColumn("SongData", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSongData);
+                this.columnOrderingIndex = new global::System.Data.DataColumn("OrderingIndex", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOrderingIndex);
                 this.columnPlayListID.AllowDBNull = false;
                 this.columnPlaylistName.AllowDBNull = false;
                 this.columnPlaylistName.MaxLength = 2147483647;
@@ -1471,6 +1504,11 @@ namespace Webster.ManagedServices.Data {
                 this.columnSongFileName.AllowDBNull = false;
                 this.columnSongFileName.MaxLength = 2147483647;
                 this.columnSongData.AllowDBNull = false;
+                this.columnOrderingIndex.AutoIncrement = true;
+                this.columnOrderingIndex.AutoIncrementSeed = -1;
+                this.columnOrderingIndex.AutoIncrementStep = -1;
+                this.columnOrderingIndex.AllowDBNull = false;
+                this.columnOrderingIndex.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1610,6 +1648,8 @@ namespace Webster.ManagedServices.Data {
             
             private global::System.Data.DataColumn columnSongData;
             
+            private global::System.Data.DataColumn columnOrderingIndex;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public SelectSongDataTable() {
@@ -1669,6 +1709,14 @@ namespace Webster.ManagedServices.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn OrderingIndexColumn {
+                get {
+                    return this.columnOrderingIndex;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1709,7 +1757,8 @@ namespace Webster.ManagedServices.Data {
                 object[] columnValuesArray = new object[] {
                         SongID,
                         SongFileName,
-                        SongData};
+                        SongData,
+                        null};
                 rowSelectSongRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSelectSongRow);
                 return rowSelectSongRow;
@@ -1742,6 +1791,7 @@ namespace Webster.ManagedServices.Data {
                 this.columnSongID = base.Columns["SongID"];
                 this.columnSongFileName = base.Columns["SongFileName"];
                 this.columnSongData = base.Columns["SongData"];
+                this.columnOrderingIndex = base.Columns["OrderingIndex"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1753,6 +1803,8 @@ namespace Webster.ManagedServices.Data {
                 base.Columns.Add(this.columnSongFileName);
                 this.columnSongData = new global::System.Data.DataColumn("SongData", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSongData);
+                this.columnOrderingIndex = new global::System.Data.DataColumn("OrderingIndex", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOrderingIndex);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnSongID}, true));
                 this.columnSongID.AllowDBNull = false;
@@ -1760,6 +1812,11 @@ namespace Webster.ManagedServices.Data {
                 this.columnSongFileName.AllowDBNull = false;
                 this.columnSongFileName.MaxLength = 2147483647;
                 this.columnSongData.AllowDBNull = false;
+                this.columnOrderingIndex.AutoIncrement = true;
+                this.columnOrderingIndex.AutoIncrementSeed = -1;
+                this.columnOrderingIndex.AutoIncrementStep = -1;
+                this.columnOrderingIndex.AllowDBNull = false;
+                this.columnOrderingIndex.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1972,12 +2029,12 @@ namespace Webster.ManagedServices.Data {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public byte[] SongData {
+            public int OrderingIndex {
                 get {
-                    return ((byte[])(this[this.tableSongs.SongDataColumn]));
+                    return ((int)(this[this.tableSongs.OrderingIndexColumn]));
                 }
                 set {
-                    this[this.tableSongs.SongDataColumn] = value;
+                    this[this.tableSongs.OrderingIndexColumn] = value;
                 }
             }
             
@@ -2037,6 +2094,17 @@ namespace Webster.ManagedServices.Data {
                 }
                 set {
                     this[this.tableSongsInPlaylists.SongIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int OrderingIndex {
+                get {
+                    return ((int)(this[this.tableSongsInPlaylists.OrderingIndexColumn]));
+                }
+                set {
+                    this[this.tableSongsInPlaylists.OrderingIndexColumn] = value;
                 }
             }
             
@@ -2131,6 +2199,17 @@ namespace Webster.ManagedServices.Data {
                     this[this.tableSelectPlaylist.SongDataColumn] = value;
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int OrderingIndex {
+                get {
+                    return ((int)(this[this.tableSelectPlaylist.OrderingIndexColumn]));
+                }
+                set {
+                    this[this.tableSelectPlaylist.OrderingIndexColumn] = value;
+                }
+            }
         }
         
         /// <summary>
@@ -2177,6 +2256,17 @@ namespace Webster.ManagedServices.Data {
                 }
                 set {
                     this[this.tableSelectSong.SongDataColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int OrderingIndex {
+                get {
+                    return ((int)(this[this.tableSelectSong.OrderingIndexColumn]));
+                }
+                set {
+                    this[this.tableSelectSong.OrderingIndexColumn] = value;
                 }
             }
         }
@@ -2646,7 +2736,7 @@ namespace Webster.ManagedServices.Data.MediaDataSetTableAdapters {
             tableMapping.DataSetTable = "Songs";
             tableMapping.ColumnMappings.Add("SongID", "SongID");
             tableMapping.ColumnMappings.Add("SongFileName", "SongFileName");
-            tableMapping.ColumnMappings.Add("SongData", "SongData");
+            tableMapping.ColumnMappings.Add("OrderingIndex", "OrderingIndex");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -2663,7 +2753,7 @@ namespace Webster.ManagedServices.Data.MediaDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT SongID, SongFileName, SongData FROM dbo.Songs";
+            this._commandCollection[0].CommandText = "SELECT        SongID, SongFileName, OrderingIndex\r\nFROM            Songs";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -2816,6 +2906,7 @@ namespace Webster.ManagedServices.Data.MediaDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("Id", "Id");
             tableMapping.ColumnMappings.Add("PlaylistID", "PlaylistID");
             tableMapping.ColumnMappings.Add("SongID", "SongID");
+            tableMapping.ColumnMappings.Add("OrderingIndex", "OrderingIndex");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -2832,7 +2923,8 @@ namespace Webster.ManagedServices.Data.MediaDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, PlaylistID, SongID FROM dbo.SongsInPlaylists";
+            this._commandCollection[0].CommandText = "SELECT        Id, PlaylistID, SongID, OrderingIndex\r\nFROM            SongsInPlayl" +
+                "ists";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -2987,6 +3079,7 @@ namespace Webster.ManagedServices.Data.MediaDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("SongID", "SongID");
             tableMapping.ColumnMappings.Add("SongFileName", "SongFileName");
             tableMapping.ColumnMappings.Add("SongData", "SongData");
+            tableMapping.ColumnMappings.Add("OrderingIndex", "OrderingIndex");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -3013,9 +3106,14 @@ namespace Webster.ManagedServices.Data.MediaDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(MediaDataSet.SelectPlaylistDataTable dataTable, System.Guid PlayListID) {
+        public virtual int Fill(MediaDataSet.SelectPlaylistDataTable dataTable, global::System.Nullable<global::System.Guid> PlayListID) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[1].Value = ((System.Guid)(PlayListID));
+            if ((PlayListID.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((System.Guid)(PlayListID.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -3027,9 +3125,14 @@ namespace Webster.ManagedServices.Data.MediaDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual MediaDataSet.SelectPlaylistDataTable GetData(System.Guid PlayListID) {
+        public virtual MediaDataSet.SelectPlaylistDataTable GetData(global::System.Nullable<global::System.Guid> PlayListID) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[1].Value = ((System.Guid)(PlayListID));
+            if ((PlayListID.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((System.Guid)(PlayListID.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
             MediaDataSet.SelectPlaylistDataTable dataTable = new MediaDataSet.SelectPlaylistDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -3160,6 +3263,7 @@ namespace Webster.ManagedServices.Data.MediaDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("SongID", "SongID");
             tableMapping.ColumnMappings.Add("SongFileName", "SongFileName");
             tableMapping.ColumnMappings.Add("SongData", "SongData");
+            tableMapping.ColumnMappings.Add("OrderingIndex", "OrderingIndex");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -3186,9 +3290,14 @@ namespace Webster.ManagedServices.Data.MediaDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(MediaDataSet.SelectSongDataTable dataTable, System.Guid SongID) {
+        public virtual int Fill(MediaDataSet.SelectSongDataTable dataTable, global::System.Nullable<global::System.Guid> SongID) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[1].Value = ((System.Guid)(SongID));
+            if ((SongID.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((System.Guid)(SongID.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -3200,9 +3309,14 @@ namespace Webster.ManagedServices.Data.MediaDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual MediaDataSet.SelectSongDataTable GetData(System.Guid SongID) {
+        public virtual MediaDataSet.SelectSongDataTable GetData(global::System.Nullable<global::System.Guid> SongID) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[1].Value = ((System.Guid)(SongID));
+            if ((SongID.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((System.Guid)(SongID.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
             MediaDataSet.SelectSongDataTable dataTable = new MediaDataSet.SelectSongDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -3259,6 +3373,7 @@ namespace Webster.ManagedServices.Data.MediaDataSetTableAdapters {
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[2])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[2])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PlayListID", global::System.Data.SqlDbType.UniqueIdentifier, 16, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[2])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SongID", global::System.Data.SqlDbType.UniqueIdentifier, 16, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[2])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OrderingIndex", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3328,10 +3443,11 @@ namespace Webster.ManagedServices.Data.MediaDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int InsertSongIntoPlaylist(System.Guid PlayListID, System.Guid SongID) {
+        public virtual int InsertSongIntoPlaylist(System.Guid PlayListID, System.Guid SongID, int OrderingIndex) {
             global::System.Data.SqlClient.SqlCommand command = ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[2]));
             command.Parameters[1].Value = ((System.Guid)(PlayListID));
             command.Parameters[2].Value = ((System.Guid)(SongID));
+            command.Parameters[3].Value = ((int)(OrderingIndex));
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
