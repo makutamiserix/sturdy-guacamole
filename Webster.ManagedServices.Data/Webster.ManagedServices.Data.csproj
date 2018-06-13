@@ -95,5 +95,11 @@
       <DependentUpon>DataManager.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Webster.ManagedServices.Contracts\Webster.ManagedServices.Contracts.csproj">
+      <Project>{a4ae11b9-90b3-4f0b-ba1d-11a4017e0858}</Project>
+      <Name>Webster.ManagedServices.Contracts</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -13,5 +13,7 @@ namespace Webster.ManagedServices.Contracts
     {
         [OperationContract] Stream GetAudioStream(Guid songID);
         [OperationContract] Stream[] GetAudioStreams(Guid playListID);
+        [OperationContract] List<Song> GetSongs();
+        [OperationContract] List<Playlist> GetPlaylists();
     }
 }

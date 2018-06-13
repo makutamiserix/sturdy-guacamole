@@ -20,5 +20,15 @@ namespace Webster.ManagedServices.Client
         {
             return this.Channel.GetAudioStreams(playListID);
         }
+
+        public List<Playlist> GetPlaylists()
+        {
+            return this.Channel.GetPlaylists();
+        }
+
+        public List<Song> GetSongs()
+        {
+            return this.Channel.GetSongs();
+        }
     }
 }

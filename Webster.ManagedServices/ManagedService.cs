@@ -12,7 +12,7 @@ using Webster.ManagedServices.Contracts;
 namespace Webster.ManagedServices
 {
     [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Multiple, InstanceContextMode = InstanceContextMode.PerCall)]
-    public partial class ManagedService : Component, IRandomNumberService, IStreamingService
+    public partial class ManagedService : Component, IRandomNumberService
     {
         public ManagedService()
         {
@@ -24,16 +24,6 @@ namespace Webster.ManagedServices
             container.Add(this);
 
             InitializeComponent();
-        }
-
-        public Stream GetAudioStream(Guid songID)
-        {
-            return this.manager.GetAudioStream(songID);
-        }
-
-        public Stream[] GetAudioStreams(Guid playListID)
-        {
-            return this.manager.GetAudioStreams(playListID).ToArray();
         }
 
         public byte[] GetRandomBytes(int size)

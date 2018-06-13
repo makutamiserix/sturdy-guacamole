@@ -6,6 +6,7 @@ using System.Numerics;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Webster.ManagedServices.Contracts;
 
 namespace Webster.ManagedServices.Data
 {
@@ -13,6 +14,8 @@ namespace Webster.ManagedServices.Data
     {
         private MediaDataSetTableAdapters.QueriesTableAdapter queriesAdapter;
         private MediaDataSetTableAdapters.SelectSongTableAdapter selectSongAdapter;
+        private MediaDataSetTableAdapters.PlaylistsTableAdapter playlistsAdapter;
+        private MediaDataSetTableAdapters.SongsTableAdapter songsAdapter;
         private MediaDataSetTableAdapters.SelectPlaylistTableAdapter selectPlaylistAdapter;
 
         private void InitializeComponent()
@@ -20,6 +23,8 @@ namespace Webster.ManagedServices.Data
             this.queriesAdapter = new Webster.ManagedServices.Data.MediaDataSetTableAdapters.QueriesTableAdapter();
             this.selectPlaylistAdapter = new Webster.ManagedServices.Data.MediaDataSetTableAdapters.SelectPlaylistTableAdapter();
             this.selectSongAdapter = new Webster.ManagedServices.Data.MediaDataSetTableAdapters.SelectSongTableAdapter();
+            this.playlistsAdapter = new Webster.ManagedServices.Data.MediaDataSetTableAdapters.PlaylistsTableAdapter();
+            this.songsAdapter = new Webster.ManagedServices.Data.MediaDataSetTableAdapters.SongsTableAdapter();
             // 
             // selectPlaylistAdapter
             // 
@@ -28,6 +33,14 @@ namespace Webster.ManagedServices.Data
             // selectSongAdapter
             // 
             this.selectSongAdapter.ClearBeforeFill = true;
+            // 
+            // playlistsAdapter
+            // 
+            this.playlistsAdapter.ClearBeforeFill = true;
+            // 
+            // songsAdapter
+            // 
+            this.songsAdapter.ClearBeforeFill = true;
 
         }
 
@@ -73,6 +86,53 @@ namespace Webster.ManagedServices.Data
         public string GetRandomInteger(byte[] value)
         {
             return BigInteger.Abs(new BigInteger(value)).ToString();
+        }
+
+        private Song GetSong(MediaDataSet.SongsRow row)
+        {
+            return new Song()
+            {
+                SongID = row.SongID,
+                SongFileName = row.SongFileName,
+                SongData = row.SongData
+            };
+        }
+
+        private Playlist GetPlaylist(MediaDataSet.PlaylistsRow row)
+        {
+            return new Playlist()
+            {
+                PlaylistID = row.PlayListID,
+                PlaylistName = row.PlaylistName
+            };
+        }
+
+        public List<Song> GetSongs()
+        {
+            var data = this.songsAdapter.GetData();
+
+            List<Song> songs = new List<Song>(data.Count);
+
+            for (int i = 0; i < data.Count; i++)
+            {
+                songs.Add(this.GetSong(data[i]));
+            }
+
+            return songs;
+        }
+
+        public List<Playlist> GetPlaylists()
+        {
+            var data = this.playlistsAdapter.GetData();
+
+            List<Playlist> playlists = new List<Playlist>(data.Count);
+
+            for (int i = 0; i < data.Count; i++)
+            {
+                playlists.Add(this.GetPlaylist(data[i]));
+            }
+
+            return playlists;
         }
     }
 }
