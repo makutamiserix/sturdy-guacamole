@@ -32,5 +32,16 @@ namespace Webster.ManagedServices.Data.Properties {
                 return ((string)(this["MediaConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=sglhpomtr3.database.windows.net;Initial Catalog=Media;Persist Securit" +
+            "y Info=True;User ID=Network;Password=vfr4#EDC;Connect Timeout=60")]
+        public string AzureMediaConnectionString {
+            get {
+                return ((string)(this["AzureMediaConnectionString"]));
+            }
+        }
     }
 }
