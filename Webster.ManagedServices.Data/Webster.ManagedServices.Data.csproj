@@ -101,5 +101,9 @@
       <Name>Webster.ManagedServices.Contracts</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="dbo.SelectSong.sql" />
+    <Content Include="dbo.UpdateShortName.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

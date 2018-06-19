@@ -16,6 +16,7 @@ namespace Webster.ManagedServices.Data
         private MediaDataSetTableAdapters.SelectSongTableAdapter selectSongAdapter;
         private MediaDataSetTableAdapters.PlaylistsTableAdapter playlistsAdapter;
         private MediaDataSetTableAdapters.SongsTableAdapter songsAdapter;
+        private MediaDataSetTableAdapters.SongShortNamesTableAdapter shortNamesAdapter;
         private MediaDataSetTableAdapters.SelectPlaylistTableAdapter selectPlaylistAdapter;
 
         private void InitializeComponent()
@@ -25,6 +26,7 @@ namespace Webster.ManagedServices.Data
             this.selectSongAdapter = new Webster.ManagedServices.Data.MediaDataSetTableAdapters.SelectSongTableAdapter();
             this.playlistsAdapter = new Webster.ManagedServices.Data.MediaDataSetTableAdapters.PlaylistsTableAdapter();
             this.songsAdapter = new Webster.ManagedServices.Data.MediaDataSetTableAdapters.SongsTableAdapter();
+            this.shortNamesAdapter = new Webster.ManagedServices.Data.MediaDataSetTableAdapters.SongShortNamesTableAdapter();
             // 
             // selectPlaylistAdapter
             // 
@@ -41,6 +43,10 @@ namespace Webster.ManagedServices.Data
             // songsAdapter
             // 
             this.songsAdapter.ClearBeforeFill = true;
+            // 
+            // shortNamesAdapter
+            // 
+            this.shortNamesAdapter.ClearBeforeFill = true;
 
         }
 
@@ -138,6 +144,29 @@ namespace Webster.ManagedServices.Data
         public byte[] GetAudioBytes(Guid songID)
         {
             return this.GetAudioStream(songID).ToArray();
+        }
+
+        private SongShortName GetSongShortName(MediaDataSet.SongShortNamesRow row)
+        {
+            return new SongShortName()
+            {
+                SongID = row.SongID,
+                ShortName = row.ShortName
+            };
+        }
+
+        public List<SongShortName> GetShortNames()
+        {
+            var data = this.shortNamesAdapter.GetData();
+
+            List<SongShortName> shortNames = new List<SongShortName>(data.Count);
+
+            for (int i = 0; i < data.Count; i++)
+            {
+                shortNames.Add(this.GetSongShortName(data[i]));
+            }
+
+            return shortNames;
         }
     }
 }
